@@ -18,11 +18,12 @@
         android:layout_height="wrap_content"
         android:stretchColumns="1">
         <TableRow
+            android:id="@+id/personInfo"
             android:background="@drawable/login_box">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/personal_info"
+                android:drawableLeft="@drawable/icon_personal"
                 android:text="个人信息"
                 android:textColor="#000"
                 android:gravity="center"
@@ -33,15 +34,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:src="@drawable/arrow"
+                android:src="@drawable/icon_arrow"
                 />
         </TableRow>
         <TableRow
+            android:id="@+id/myDevice"
             android:background="@drawable/login_box">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/personal_info"
+                android:drawableLeft="@drawable/icon_mobilephone"
                 android:text="我的设备"
                 android:textColor="#000"
                 android:gravity="center"
@@ -52,9 +54,84 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:src="@drawable/arrow"
+                android:src="@drawable/icon_arrow"
                 />
         </TableRow>
-
+        <TableRow
+            android:id="@+id/myService"
+            android:background="@drawable/login_box">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_coffee"
+                android:text="我的服务"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:textSize="30sp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:src="@drawable/icon_arrow"
+                />
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/Other_settings"
+        android:layout_below="@+id/My_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="其他设置"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textColor="#7e7c7c"/>
+    <TableLayout
+        android:layout_below="@+id/Other_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+        <TableRow
+            android:id="@+id/help"
+            android:background="@drawable/login_box">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_help"
+                android:text="帮助"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:textSize="30sp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:src="@drawable/icon_arrow"
+                />
+        </TableRow>
+        <TableRow
+            android:id="@+id/about"
+            android:background="@drawable/login_box">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_about"
+                android:text="关于"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:textSize="30sp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:src="@drawable/icon_arrow"
+                />
+        </TableRow>
     </TableLayout>
 </RelativeLayout>
