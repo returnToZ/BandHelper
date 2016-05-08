@@ -14,6 +14,7 @@ public class SettingActivity extends Activity implements View.OnClickListener{
     TableRow myDevice;
     TableRow about;
     TableRow help;
+    TableRow service;
     Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -24,11 +25,13 @@ public class SettingActivity extends Activity implements View.OnClickListener{
         about = (TableRow)findViewById(R.id.about);
         help = (TableRow)findViewById(R.id.help);
         logout = (Button)findViewById(R.id.logout);
+        service = (TableRow)findViewById(R.id.myService);
         personInfo.setOnClickListener(this);
         myDevice.setOnClickListener(this);
         about.setOnClickListener(this);
         help.setOnClickListener(this);
         logout.setOnClickListener(this);
+        service.setOnClickListener(this);
     }
     public void onClick(View v){
         switch (v.getId()){
@@ -51,6 +54,10 @@ public class SettingActivity extends Activity implements View.OnClickListener{
             case R.id.logout:
                 Intent intent4 = new Intent(v.getContext(),LoginActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.myService:
+                Intent intent5 = new Intent(v.getContext(),ServiceActivity.class);
+                startActivity(intent5);
                 break;
         }
     }
