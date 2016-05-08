@@ -1,10 +1,12 @@
-package james.com.mag1c_band;
+package james.com.mag1c_band.UI;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import james.com.mag1c_band.R;
 
 public class LoginActivity extends Activity{
     Button login;

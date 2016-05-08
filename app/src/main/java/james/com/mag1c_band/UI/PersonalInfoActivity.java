@@ -1,8 +1,10 @@
-package james.com.mag1c_band;
+package james.com.mag1c_band.UI;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+
+import james.com.mag1c_band.R;
 
 public class PersonalInfoActivity extends Activity{
     @Override

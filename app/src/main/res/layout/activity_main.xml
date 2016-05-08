@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="james.com.mag1c_band.MainActivity">
+    tools:context=".UI.MainActivity">
 
     <Button
         android:id="@+id/setting"

@@ -2,6 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_logout"
+        android:layout_alignParentRight="true"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -9,7 +15,7 @@
         android:text="我的设置"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
+        android:textSize="10sp"
         android:textColor="#7e7c7c"/>
     <TableLayout
         android:id="@+id/My_settings"
@@ -28,7 +34,7 @@
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
-                android:textSize="30sp"
+                android:textSize="@dimen/setting_text"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -48,7 +54,7 @@
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
-                android:textSize="30sp"
+                android:textSize="@dimen/setting_text"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -68,7 +74,7 @@
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
-                android:textSize="30sp"
+                android:textSize="@dimen/setting_text"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -86,7 +92,7 @@
         android:text="其他设置"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
+        android:textSize="10sp"
         android:textColor="#7e7c7c"/>
     <TableLayout
         android:layout_below="@+id/Other_settings"
@@ -104,7 +110,7 @@
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
-                android:textSize="30sp"
+                android:textSize="@dimen/setting_text"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -124,7 +130,7 @@
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
-                android:textSize="30sp"
+                android:textSize="@dimen/setting_text"
                 />
             <ImageView
                 android:layout_width="wrap_content"
