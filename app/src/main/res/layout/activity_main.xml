@@ -30,4 +30,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/icon_share"
         android:layout_toLeftOf="@+id/chat"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="这里是心率图"/>
 </RelativeLayout>

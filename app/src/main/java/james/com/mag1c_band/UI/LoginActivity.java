@@ -10,12 +10,16 @@ import james.com.mag1c_band.R;
 
 public class LoginActivity extends Activity{
     Button login;
+    Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         login = (Button)findViewById(R.id.login);
+        register = (Button)findViewById(R.id.register);
+        login.getBackground().setAlpha(0);
+        register.getBackground().setAlpha(0);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

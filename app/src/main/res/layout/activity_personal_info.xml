@@ -172,11 +172,13 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/edit_profile"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dip"
         android:layout_marginRight="15dip"
         android:layout_marginTop="16dip"
+        android:drawableRight="@drawable/icon_edit"
         android:gravity="center_vertical|center_horizontal"
         android:text="点击修改资料"
         android:textSize="20sp"

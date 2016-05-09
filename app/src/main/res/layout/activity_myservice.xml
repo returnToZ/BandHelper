@@ -63,8 +63,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/icon_coffee"
-                android:text="我的服务"
+                android:drawableLeft="@drawable/icon_contact"
+                android:text="联系我们"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
