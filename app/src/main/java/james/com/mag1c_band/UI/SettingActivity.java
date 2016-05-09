@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableRow;
 
 import james.com.mag1c_band.R;
@@ -15,7 +16,7 @@ public class SettingActivity extends Activity implements View.OnClickListener{
     TableRow about;
     TableRow help;
     TableRow service;
-    Button logout;
+    ImageView logout;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class SettingActivity extends Activity implements View.OnClickListener{
         myDevice = (TableRow)findViewById(R.id.myDevice);
         about = (TableRow)findViewById(R.id.about);
         help = (TableRow)findViewById(R.id.help);
-        logout = (Button)findViewById(R.id.logout);
+        logout = (ImageView)findViewById(R.id.logout);
         service = (TableRow)findViewById(R.id.myService);
         personInfo.setOnClickListener(this);
         myDevice.setOnClickListener(this);

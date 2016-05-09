@@ -5,21 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import james.com.mag1c_band.R;
 
 public class MainActivity extends Activity {
 
-    Button setting;
-    Button share;
-    Button chat;
+    ImageView setting;
+    ImageView share;
+    ImageView chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setting = (Button)findViewById(R.id.setting);
-        share = (Button)findViewById(R.id.share);
-        chat = (Button)findViewById(R.id.chat);
+        setting = (ImageView)findViewById(R.id.setting);
+        share = (ImageView)findViewById(R.id.share);
+        chat = (ImageView)findViewById(R.id.chat);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
