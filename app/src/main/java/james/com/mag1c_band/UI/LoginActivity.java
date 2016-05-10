@@ -23,8 +23,15 @@ public class LoginActivity extends Activity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(view.getContext(),MainActivity.class);
+                Intent intent1 = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent1);
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(view.getContext(),RegisterActivity.class);
+                startActivity(intent2);
             }
         });
     }

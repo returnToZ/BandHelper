@@ -22,6 +22,7 @@
         <activity android:name=".UI.AboutActivity"/>
         <activity android:name=".UI.HelpActivity"/>
         <activity android:name=".UI.ServiceActivity"/>
+        <activity android:name=".UI.RegisterActivity"/>
     </application>
 
 </manifest>
