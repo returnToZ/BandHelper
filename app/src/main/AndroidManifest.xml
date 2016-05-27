@@ -17,12 +17,13 @@
         </activity>
         <activity android:name=".UI.MainActivity"/>
         <activity android:name=".UI.SettingActivity"/>
-        <activity android:name=".UI.PersonalInfoActivity"/>
+        <activity android:name=".UI.PersonalInfoShowActivity"/>
         <activity android:name=".UI.MyDeviceActivity"/>
         <activity android:name=".UI.AboutActivity"/>
         <activity android:name=".UI.HelpActivity"/>
         <activity android:name=".UI.ServiceActivity"/>
         <activity android:name=".UI.RegisterActivity"/>
+        <activity android:name=".UI.PersonalInfoEditActivity"/>
     </application>
 
 </manifest>
