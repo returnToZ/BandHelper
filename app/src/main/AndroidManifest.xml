@@ -24,6 +24,8 @@
         <activity android:name=".UI.ServiceActivity"/>
         <activity android:name=".UI.RegisterActivity"/>
         <activity android:name=".UI.PersonalInfoEditActivity"/>
+        <activity android:name=".UI.ExitWindow"
+            android:theme="@style/ExitWindow"/>
     </application>
 
 </manifest>

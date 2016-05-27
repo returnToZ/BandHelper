@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
     ImageView setting;
     ImageView share;
     ImageView chat;
+    public static MainActivity MainInstance = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
         setting = (ImageView)findViewById(R.id.setting);
         share = (ImageView)findViewById(R.id.share);
         chat = (ImageView)findViewById(R.id.chat);
+        MainInstance = this;
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,5 +30,9 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+    public void onBackPressed(){
+        Intent intent = new Intent(this,ExitWindow.class);
+        startActivity(intent);
     }
 }

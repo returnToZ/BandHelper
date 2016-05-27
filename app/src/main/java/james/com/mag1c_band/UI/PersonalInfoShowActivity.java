@@ -34,6 +34,7 @@ public class PersonalInfoShowActivity extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PersonalInfoEditActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
@@ -43,7 +44,7 @@ public class PersonalInfoShowActivity extends Activity{
         nickname.setText(pref.getString("nickname","尚未填写"));
         phone_number.setText(pref.getString("phone_number","尚未填写"));
         mail.setText(pref.getString("mail","尚未填写"));
-        address.setText(pref.getString("address","尚未填写"));
-        sex.setText(pref.getString("sex","尚未填写"));
+        address.setText(pref.getString("address", "尚未填写"));
+        sex.setText(pref.getString("sex", "尚未填写"));
     }
 }

@@ -36,6 +36,7 @@ public class RegisterActivity extends Activity{
                 editor.putString("account",account.getText().toString());
                 editor.apply();
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
@@ -43,6 +44,7 @@ public class RegisterActivity extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(),LoginActivity.class);
+                finish();
                 startActivity(intent);
             }
         });

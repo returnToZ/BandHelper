@@ -24,6 +24,7 @@ public class LoginActivity extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(view.getContext(), MainActivity.class);
+                finish();
                 startActivity(intent1);
             }
         });
@@ -31,6 +32,7 @@ public class LoginActivity extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(view.getContext(),RegisterActivity.class);
+                finish();
                 startActivity(intent2);
             }
         });

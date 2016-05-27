@@ -33,27 +33,27 @@ public class PersonalInfoEditActivity extends Activity {
             public void onClick(View view) {
                 setPersonal();
                 Intent intent = new Intent(view.getContext(),PersonalInfoShowActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
     }
-    protected void setPersonal(){
+    protected void setPersonal(){//设置个人信息
         SharedPreferences.Editor editor = getSharedPreferences("personal_data",MODE_PRIVATE).edit();
         editor.putString("nickname",nickname.getText().toString());
         editor.putString("phone_number",phone_number.getText().toString());
         editor.putString("mail",mail.getText().toString());
         editor.putString("address",address.getText().toString());
-        editor.putString("sex",sex.getText().toString());
+        editor.putString("sex", sex.getText().toString());
         editor.apply();
     }
-    protected void showPersonal(){
-        SharedPreferences pref = getSharedPreferences("personal_data",MODE_PRIVATE);
-        nickname.setText(pref.getString("nickname","尚未填写"));
-        phone_number.setText(pref.getString("phone_number","尚未填写"));
-        mail.setText(pref.getString("mail","尚未填写"));
+    protected void showPersonal(){//读取文件中的个人信息
+        SharedPreferences pref = getSharedPreferences("personal_data", MODE_PRIVATE);
+        nickname.setText(pref.getString("nickname", "尚未填写"));
+        phone_number.setText(pref.getString("phone_number", "尚未填写"));
+        mail.setText(pref.getString("mail", "尚未填写"));
         address.setText(pref.getString("address", "尚未填写"));
-        sex.setText(pref.getString("sex","尚未填写"));
+        sex.setText(pref.getString("sex", "尚未填写"));
     }
-
 
 }
