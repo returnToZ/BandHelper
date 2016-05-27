@@ -30,6 +30,13 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void onBackPressed(){
         Intent intent = new Intent(this,ExitWindow.class);

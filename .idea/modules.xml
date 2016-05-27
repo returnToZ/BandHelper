@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mag1C_baNd.iml" filepath="$PROJECT_DIR$/Mag1C_baNd.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/social_sdk_library_/social_sdk_library_.iml" filepath="$PROJECT_DIR$/social_sdk_library_/social_sdk_library_.iml" />
     </modules>
   </component>
 </project>
