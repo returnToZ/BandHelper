@@ -5,6 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "james.com.mag1c_band"
         minSdkVersion 18
         targetSdkVersion 23
