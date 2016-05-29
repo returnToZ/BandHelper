@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.socialize.PlatformConfig;
@@ -16,6 +17,9 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.editorpage.ShareActivity;
 import com.umeng.socialize.media.UMImage;
 
+import org.w3c.dom.Text;
+
+import james.com.mag1c_band.ChartFile.ChartActivity;
 import james.com.mag1c_band.R;
 
 public class MainActivity extends Activity {
@@ -23,16 +27,20 @@ public class MainActivity extends Activity {
     ImageView setting;
     ImageView share;
     ImageView chat;
+    TextView chart;
     final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
             {
                     SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SINA,
                     SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE,SHARE_MEDIA.DOUBAN
-            };
+            };//分享功能
     public static MainActivity MainInstance = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
+        以下是分享功能的初始化设置,在这里填申请来的密钥,注意应放在程序的入口
+         */
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
         //微信 appid appsecret
         PlatformConfig.setSinaWeibo("3319386979", "4f8927a364847eac97ccb8f11abb9ac5");
@@ -42,6 +50,7 @@ public class MainActivity extends Activity {
         setting = (ImageView)findViewById(R.id.setting);
         share = (ImageView)findViewById(R.id.share);
         chat = (ImageView)findViewById(R.id.chat);
+        chart = (TextView)findViewById(R.id.chart);
         MainInstance = this;
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +70,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 UMImage image = new UMImage(MainActivity.this,
-                        BitmapFactory.decodeResource(getResources(), R.drawable.icon_app));
+                        BitmapFactory.decodeResource(getResources(), R.drawable.pink));
                 new ShareAction(MainActivity.this).setDisplayList(displaylist)
                         .withText( "test" )
                         .withTitle("title")//title参数对新浪、人人、豆瓣不生效
@@ -84,6 +93,13 @@ public class MainActivity extends Activity {
                             }
                         })
                         .open();
+            }
+        });
+        chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),ChartActivity.class);
+                startActivity(intent);
             }
         });
     }

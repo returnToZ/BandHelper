@@ -43,6 +43,9 @@
         <activity android:name=".UI.PersonalInfoEditActivity"/>
         <activity android:name=".UI.ExitWindow" android:theme="@style/ExitWindow"/>
         <activity android:name=".UI.ChatActivity"/>
+        <activity android:name=".ChartFile.ChartActivity"/>
+        <activity android:name=".ChartFile.TableActivity"/>
+        <activity android:name=".ChartFile.DynamicChart"/>
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:theme="@style/Theme.UMDefault"
