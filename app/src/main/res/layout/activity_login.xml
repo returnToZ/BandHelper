@@ -60,8 +60,24 @@
             android:inputType="numberPassword"
             android:background="@drawable/login_box"/>
         <!-- 登录button -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:id="@+id/remember_password"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password_edit"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32sp"
+            android:gravity="center"
+            android:layout_toRightOf="@id/remember_password"
+            android:layout_below="@id/password_edit"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:text="记住密码"/>
         <Button
             android:id="@+id/login"
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/password_edit"
@@ -71,6 +87,7 @@
 
         <Button
             android:id="@+id/register"
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注册"

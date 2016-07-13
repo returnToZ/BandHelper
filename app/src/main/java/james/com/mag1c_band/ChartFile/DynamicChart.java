@@ -76,8 +76,8 @@ public class DynamicChart extends Activity {
         mXYRenderer = buildRenderer(color, style, true);
         mXYRenderer.setShowGrid(true);// 显示表格
         mXYRenderer.setGridColor(Color.GREEN);// 据说绿色代表健康色调，不过我比较喜欢灰色
-        mXYRenderer.setXLabels(20);
-        mXYRenderer.setYLabels(10);
+        mXYRenderer.setXLabels(50);
+        mXYRenderer.setYLabels(50);
         mXYRenderer.setYLabelsAlign(Align.RIGHT);// 右对齐
         // mXYRenderer.setPointSize((float) 2);
         mXYRenderer.setShowLegend(false);// 不显示图例

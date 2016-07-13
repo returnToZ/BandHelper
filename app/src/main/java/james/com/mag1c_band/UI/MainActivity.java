@@ -41,15 +41,7 @@ public class MainActivity extends Activity {
     ImageView setting;
     ImageView share;
     ImageView chat;
-    private String title = "线性统计图示例";
-    private XYSeries series;// XY数据点
-    private XYMultipleSeriesDataset mDataset;// XY轴数据集
-    private GraphicalView mViewChart;// 用于显示现行统计图
-    private XYMultipleSeriesRenderer mXYRenderer;// 线性统计图主描绘器
-    private Context context;// 用于获取上下文对象
-    private LinearLayout mLayout;
-    private int X = 5;// X数据集大小
-    private int Y = 5;//
+    Button start;
     final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
             {
                     SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SINA,
@@ -72,6 +64,7 @@ public class MainActivity extends Activity {
         setting = (ImageView)findViewById(R.id.setting);
         share = (ImageView)findViewById(R.id.share);
         chat = (ImageView)findViewById(R.id.chat);
+        start = (Button)findViewById(R.id.start);
         MainInstance = this;
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,72 +109,16 @@ public class MainActivity extends Activity {
                         .open();
             }
         });
-        /*
-        以下为设置图表的逻辑
-         */
-        context = getApplicationContext();// 获取上下文对象
-        mLayout = (LinearLayout) findViewById(R.id.chart);// 这里获得xy_chart的布局，下面会把图表画在这个布局里面
-        series = new XYSeries(title);// 这个类用来放置曲线上的所有点，是一个点的集合，根据这些点画出曲线
-
-        mDataset = new XYMultipleSeriesDataset(); // 创建一个数据集的实例，这个数据集将被用来创建图表
-        mDataset.addSeries(series);// 将点集添加到这个数据集中
-
-        int color = Color.RED;// 设置颜色
-        PointStyle style = PointStyle.CIRCLE;// 设置外观周期性显示
-        mXYRenderer = buildRenderer(color, style, true);
-        mXYRenderer.setShowGrid(true);// 显示表格
-        mXYRenderer.setGridColor(Color.GREEN);// 据说绿色代表健康色调，不过我比较喜欢灰色
-        mXYRenderer.setXLabels(5);//设置X轴刻度个数
-        mXYRenderer.setYLabels(5);//设置Y轴刻度个数
-        mXYRenderer.setExternalZoomEnabled(true);//设置是否可以缩放
-        mXYRenderer.setYLabelsAlign(Paint.Align.RIGHT);// 右对齐
-        //mXYRenderer.setAxisTitleTextSize(50); // 坐标轴标题字体大小： 16
-        //mXYRenderer.setChartTitleTextSize(50); // 图表标题字体大小： 20
-        mXYRenderer.setLabelsTextSize(100f); // 轴标签字体大小： 15
-        //mXYRenderer.setLegendTextSize(55); // 图例字体大小： 15
-        mXYRenderer.setShowLegend(false);// 不显示图例
-        mXYRenderer.setZoomEnabled(false);
-        mXYRenderer.setPanEnabled(true, false);
-        mXYRenderer.setClickEnabled(false);
-        setChartSettings(mXYRenderer, title, "时间", "数量", 1, 5, 50, 170,//xmin,xmax,ymin,ymax
-                Color.WHITE, Color.WHITE);// 这个是采用官方APIdemo提供给的方法
-        // 设置好图表的样式
-
-        mViewChart = ChartFactory.getLineChartView(context, mDataset,
-                mXYRenderer);// 通过ChartFactory生成图表
-
-        mLayout.addView(mViewChart, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                ViewGroup.LayoutParams.FILL_PARENT));// 将图表添加到布局中去
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ChartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void onBackPressed(){
         Intent intent = new Intent(this,ExitWindow.class);
         startActivity(intent);
     }
-    protected XYMultipleSeriesRenderer buildRenderer(int color,
-                                                     PointStyle style, boolean fill) {// 设置图表中曲线本身的样式，包括颜色、点的大小以及线的粗细等
-        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
-        XYSeriesRenderer r = new XYSeriesRenderer();
-        r.setColor(color);
-        r.setPointStyle(style);
-        r.setFillPoints(fill);
-        r.setLineWidth(3);
-        renderer.addSeriesRenderer(r);
-
-        return renderer;
-    }
-    protected void setChartSettings(XYMultipleSeriesRenderer renderer,
-                                    String title, String xTitle, String yTitle, double xMin,
-                                    double xMax, double yMin, double yMax, int axesColor,
-                                    int labelsColor) {// 设置主描绘器的各项属性，详情可阅读官方API文档
-        renderer.setChartTitle(title);
-        renderer.setXTitle(xTitle);
-        renderer.setYTitle(yTitle);
-        renderer.setXAxisMin(xMin);
-        renderer.setXAxisMax(xMax);
-        renderer.setYAxisMin(yMin);
-        renderer.setYAxisMax(yMax);
-        renderer.setAxesColor(axesColor);
-        renderer.setLabelsColor(labelsColor);
-    }
-
 }

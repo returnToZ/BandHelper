@@ -25,7 +25,7 @@ public abstract class BaseSupportUtils {
     private void initRender() {
         LogUtils.LOGE(TAG,"initRender");
         // 1, 构造显示用渲染图
-        float textSize = 20f;
+        float textSize = 50f;
 
         mXYRenderer.setChartTitle("Chart Title");
         mXYRenderer.setXTitle("X Title");
