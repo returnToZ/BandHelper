@@ -54,6 +54,7 @@ public class SettingActivity extends Activity implements View.OnClickListener{
             case R.id.logout:
                 Intent intent4 = new Intent(v.getContext(),LoginActivity.class);
                 startActivity(intent4);
+                finish();
                 break;
             case R.id.myService:
                 Intent intent5 = new Intent(v.getContext(),ServiceActivity.class);
