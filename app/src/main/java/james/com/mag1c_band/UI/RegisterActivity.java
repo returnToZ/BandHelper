@@ -50,7 +50,7 @@ public class RegisterActivity extends Activity{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Register();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class RegisterActivity extends Activity{
    5.用户名已存在
    6.注册成功
     */
-    private void tryRegister_Student(){
+    private void Register(){
         if (!Utils.isNetworkAvailable(registerActivity)){
             Toast.makeText(registerActivity, "网络不可用", Toast.LENGTH_SHORT).show();
         }

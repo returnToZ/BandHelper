@@ -112,11 +112,12 @@ public class LoginActivity extends Activity{
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                String answer = null;
+                String answer = "";
                 if (msg.what == RETURN_SYMBOL)
                 {
                     Bundle bundle = msg.getData();
                     answer = bundle.getString("result");
+                    Log.d("TAG",answer);
                 }
                 if (answer == null){
                     Toast.makeText(loginActivity,"未知错误",Toast.LENGTH_SHORT).show();

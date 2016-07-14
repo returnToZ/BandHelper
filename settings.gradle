@@ -1,1 +1,2 @@
-include ':app', 'social_sdk_library_', 'AChartSDK'
+include ':app', 'social_sdk_library_', 'AChartSDK', ':'
+include ':aChartEngine'
