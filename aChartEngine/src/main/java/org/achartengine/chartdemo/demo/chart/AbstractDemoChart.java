@@ -33,15 +33,18 @@ import org.achartengine.renderer.XYSeriesRenderer;
  * An abstract class for the demo charts to extend. It contains some methods for
  * building datasets and renderers.
  */
+/*
+一个便于demo图表拓展的抽象类 包含了一些建立数据集与渲染器的方法
+ */
 public abstract class AbstractDemoChart implements IDemoChart {
 
   /**
-   * Builds an XY multiple dataset using the provided values.
+   * Builds an XY multiple dataset using the provided values.   //建立一个XY multiple的数据集
    * 
-   * @param titles the series titles
-   * @param xValues the values for the X axis
-   * @param yValues the values for the Y axis
-   * @return the XY multiple dataset
+   * @param titles the series titles    //title的集合
+   * @param xValues the values for the X axis   //x轴数据的集合
+   * @param yValues the values for the Y axis   //y轴数据的集合
+   * @return the XY multiple dataset    //返回一个XY multiple的数据集
    */
   protected XYMultipleSeriesDataset buildDataset(String[] titles, List<double[]> xValues,
       List<double[]> yValues) {
@@ -66,18 +69,20 @@ public abstract class AbstractDemoChart implements IDemoChart {
   }
 
   /**
-   * Builds an XY multiple series renderer.
+   * Builds an XY multiple series renderer.     //建立一个XY multiple 的渲染器
    * 
-   * @param colors the series rendering colors
-   * @param styles the series point styles
-   * @return the XY multiple series renderers
+   * @param colors the series rendering colors  //点集各点需要渲染的颜色
+   * @param styles the series point styles      //点集各点的样式
+   * @return the XY multiple series renderers   //返回 XY multiple 的渲染器
    */
   protected XYMultipleSeriesRenderer buildRenderer(int[] colors, PointStyle[] styles) {
     XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
     setRenderer(renderer, colors, styles);
     return renderer;
   }
-
+/**
+    设置渲染器的各种属性
+ */
   protected void setRenderer(XYMultipleSeriesRenderer renderer, int[] colors, PointStyle[] styles) {
     renderer.setAxisTitleTextSize(16);
     renderer.setChartTitleTextSize(20);

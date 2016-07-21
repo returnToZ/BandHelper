@@ -24,19 +24,19 @@ Moved Files:
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => aChartEngine\src\main\AndroidManifest.xml
-* demo\ => aChartEngine\src\main\java\
-* lint.xml => aChartEngine\lint.xml
-* res\ => aChartEngine\src\main\res\
-* src\ => aChartEngine\src\main\java\
-* src\org\achartengine\chart\package.html => aChartEngine\src\main\resources\org\achartengine\chart\package.html
-* src\org\achartengine\image\zoom-1.png => aChartEngine\src\main\resources\org\achartengine\image\zoom-1.png
-* src\org\achartengine\image\zoom_in.png => aChartEngine\src\main\resources\org\achartengine\image\zoom_in.png
-* src\org\achartengine\image\zoom_out.png => aChartEngine\src\main\resources\org\achartengine\image\zoom_out.png
-* src\org\achartengine\model\package.html => aChartEngine\src\main\resources\org\achartengine\model\package.html
-* src\org\achartengine\package.html => aChartEngine\src\main\resources\org\achartengine\package.html
-* src\org\achartengine\renderer\package.html => aChartEngine\src\main\resources\org\achartengine\renderer\package.html
-* src\org\achartengine\util\package.html => aChartEngine\src\main\resources\org\achartengine\util\package.html
+* AndroidManifest.xml => aChartEnginee\src\main\AndroidManifest.xml
+* demo\ => aChartEnginee\src\main\java\
+* lint.xml => aChartEnginee\lint.xml
+* res\ => aChartEnginee\src\main\res\
+* src\ => aChartEnginee\src\main\java\
+* src\org\achartengine\chart\package.html => aChartEnginee\src\main\resources\org\achartengine\chart\package.html
+* src\org\achartengine\image\zoom-1.png => aChartEnginee\src\main\resources\org\achartengine\image\zoom-1.png
+* src\org\achartengine\image\zoom_in.png => aChartEnginee\src\main\resources\org\achartengine\image\zoom_in.png
+* src\org\achartengine\image\zoom_out.png => aChartEnginee\src\main\resources\org\achartengine\image\zoom_out.png
+* src\org\achartengine\model\package.html => aChartEnginee\src\main\resources\org\achartengine\model\package.html
+* src\org\achartengine\package.html => aChartEnginee\src\main\resources\org\achartengine\package.html
+* src\org\achartengine\renderer\package.html => aChartEnginee\src\main\resources\org\achartengine\renderer\package.html
+* src\org\achartengine\util\package.html => aChartEnginee\src\main\resources\org\achartengine\util\package.html
 
 Next Steps:
 -----------

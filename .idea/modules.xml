@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AChartSDK/AChartSDK.iml" filepath="$PROJECT_DIR$/AChartSDK/AChartSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AChartSDK/AChartSDK.iml" filepath="$PROJECT_DIR$/AChartSDK/AChartSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mag1C_baNd.iml" filepath="$PROJECT_DIR$/Mag1C_baNd.iml" />
       <module fileurl="file://$PROJECT_DIR$/aChartEngine/aChartEngine.iml" filepath="$PROJECT_DIR$/aChartEngine/aChartEngine.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
