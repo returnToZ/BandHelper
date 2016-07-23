@@ -58,12 +58,11 @@ public class ProjectStatusChart extends AbstractDemoChart {
      */
     public Intent execute(Context context) {
         String[] titles = new String[]{"New tickets", "Fixed tickets"};
-        List<Date[]> dates = new ArrayList<Date[]>();
+        //List<Date[]> dates = new ArrayList<Date[]>();
         List<double[]> values = new ArrayList<double[]>();
         List<double[]> data = new ArrayList<double[]>();
-        data.add(new double[]{1,2,3,4,5});
-        data.add(new double[]{1,2,3,4,5});
         int length = titles.length;
+        /*
         for (int i = 0; i < length; i++)
         {
             dates.add(new Date[12]);
@@ -80,14 +79,31 @@ public class ProjectStatusChart extends AbstractDemoChart {
             dates.get(i)[10] = new Date(108, 11, 10);
             dates.get(i)[11] = new Date(108, 11, 17);
         }
+        */
+        for (int i = 0; i < length; i++)
+        {
+            data.add(new double[12]);
+            data.get(i)[0] = 1;
+            data.get(i)[1] = 2;
+            data.get(i)[2] = 3;
+            data.get(i)[3] = 4;
+            data.get(i)[4] = 5;
+            data.get(i)[5] = 6;
+            data.get(i)[6] = 7;
+            data.get(i)[7] = 8;
+            data.get(i)[8] = 9;
+            data.get(i)[9] = 10;
+            data.get(i)[10] = 11;
+            data.get(i)[11] = 12;
+        }
         values.add(new double[]{142, 123, 142, 152, 149, 122, 110, 120, 125, 155, 146, 150});
         values.add(new double[]{102, 90, 112, 105, 125, 112, 125, 112, 105, 115, 116, 135});
         length = values.get(0).length;
         int[] colors = new int[]{Color.BLUE, Color.GREEN};
-        PointStyle[] styles = new PointStyle[]{PointStyle.POINT, PointStyle.POINT};
+        PointStyle[] styles = new PointStyle[]{PointStyle.CIRCLE, PointStyle.POINT};//调整点的style
         XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-        setChartSettings(renderer, "Project work status", "Date", "Tickets", dates.get(0)[0].getTime(),
-                dates.get(0)[11].getTime(), 50, 190, Color.GRAY, Color.LTGRAY);
+        setChartSettings(renderer, "Project work status", "Date", "Tickets", data.get(0)[0],
+                data.get(0)[11], 50, 190, Color.GRAY, Color.LTGRAY);
         renderer.setXLabels(0);//x轴标签大小
         renderer.setYLabels(10);//y轴标签大小
         renderer.addYTextLabel(100, "test");//Y轴值为100处的字为test
@@ -96,6 +112,8 @@ public class ProjectStatusChart extends AbstractDemoChart {
         {
             XYSeriesRenderer seriesRenderer = (XYSeriesRenderer) renderer.getSeriesRendererAt(i);//获取第i个渲染器
             seriesRenderer.setDisplayChartValues(true);//是否在图上显示具体数值
+            seriesRenderer.setFillPoints(true);//将点设置为实心的点
+            seriesRenderer.setDisplayChartValuesDistance(30);//必须设置距离 因为默认距离是100 假如设置为100则无法显示所有的点
         }
         renderer.setXRoundedLabels(false);
         //return ChartFactory.getTimeChartIntent(context, buildDateDataset(titles, dates, values),
