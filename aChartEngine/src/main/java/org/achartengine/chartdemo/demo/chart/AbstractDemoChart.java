@@ -46,7 +46,8 @@ public abstract class AbstractDemoChart implements IDemoChart {
    * @param yValues the values for the Y axis   //y轴数据的集合
    * @return the XY multiple dataset    //返回一个XY multiple的数据集
    */
-  protected XYMultipleSeriesDataset buildDataset(String[] titles, List<double[]> xValues,
+  //注意 其中数据均为double类型
+    protected XYMultipleSeriesDataset buildDataset(String[] titles, List<double[]> xValues,
       List<double[]> yValues) {
     XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
     addXYSeries(dataset, titles, xValues, yValues, 0);
@@ -89,7 +90,7 @@ public abstract class AbstractDemoChart implements IDemoChart {
     renderer.setLabelsTextSize(15);
     renderer.setLegendTextSize(15);
     renderer.setPointSize(5f);
-    renderer.setMargins(new int[] { 20, 30, 15, 20 });
+    renderer.setMargins(new int[]{20, 30, 15, 20});
     int length = colors.length;
     for (int i = 0; i < length; i++) {
       XYSeriesRenderer r = new XYSeriesRenderer();
@@ -98,20 +99,19 @@ public abstract class AbstractDemoChart implements IDemoChart {
       renderer.addSeriesRenderer(r);
     }
   }
-
   /**
-   * Sets a few of the series renderer settings.
+   * Sets a few of the series renderer settings.    //设置图表属性
    * 
-   * @param renderer the renderer to set the properties to
-   * @param title the chart title
-   * @param xTitle the title for the X axis
-   * @param yTitle the title for the Y axis
-   * @param xMin the minimum value on the X axis
-   * @param xMax the maximum value on the X axis
-   * @param yMin the minimum value on the Y axis
-   * @param yMax the maximum value on the Y axis
-   * @param axesColor the axes color
-   * @param labelsColor the labels color
+   * @param renderer the renderer to set the properties to  //要为之设置属性的渲染器
+   * @param title the chart title   //图表的属性
+   * @param xTitle the title for the X axis     //X轴的title
+   * @param yTitle the title for the Y axis     //Y轴的title
+   * @param xMin the minimum value on the X axis    //X轴的最小值
+   * @param xMax the maximum value on the X axis    //X轴的最大值
+   * @param yMin the minimum value on the Y axis    //Y轴的最小值
+   * @param yMax the maximum value on the Y axis    //Y轴的最大值
+   * @param axesColor the axes color                //轴的颜色
+   * @param labelsColor the labels color            //标签的颜色
    */
   protected void setChartSettings(XYMultipleSeriesRenderer renderer, String title, String xTitle,
       String yTitle, double xMin, double xMax, double yMin, double yMax, int axesColor,
@@ -128,13 +128,14 @@ public abstract class AbstractDemoChart implements IDemoChart {
   }
 
   /**
-   * Builds an XY multiple time dataset using the provided values.
+   * Builds an XY multiple time dataset using the provided values.  //建立一个XY multiple的数据集
    * 
-   * @param titles the series titles
-   * @param xValues the values for the X axis
-   * @param yValues the values for the Y axis
-   * @return the XY multiple time dataset
+   * @param titles the series titles        //titles
+   * @param xValues the values for the X axis   //X轴的数据
+   * @param yValues the values for the Y axis   //Y轴的数据
+   * @return the XY multiple time dataset       //返回一个XY multiple的数据集
    */
+  //注意和上面的不同 这个里面的数据都是Date型
   protected XYMultipleSeriesDataset buildDateDataset(String[] titles, List<Date[]> xValues,
       List<double[]> yValues) {
     XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
@@ -155,9 +156,9 @@ public abstract class AbstractDemoChart implements IDemoChart {
   /**
    * Builds a category series using the provided values.
    * 
-   * @param titles the series titles
-   * @param values the values
-   * @return the category series
+   * @param titles the series titles    //titles
+   * @param values the values           //values
+   * @return the category series        //类别数据
    */
   protected CategorySeries buildCategoryDataset(String title, double[] values) {
     CategorySeries series = new CategorySeries(title);
@@ -208,11 +209,12 @@ public abstract class AbstractDemoChart implements IDemoChart {
 
   /**
    * Builds a bar multiple series dataset using the provided values.
-   * 
+   *
    * @param titles the series titles
    * @param values the values
    * @return the XY multiple bar dataset
    */
+  //此处为柱状图的建立数据集方法
   protected XYMultipleSeriesDataset buildBarDataset(String[] titles, List<double[]> values) {
     XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
     int length = titles.length;
@@ -230,10 +232,11 @@ public abstract class AbstractDemoChart implements IDemoChart {
 
   /**
    * Builds a bar multiple series renderer to use the provided colors.
-   * 
+   *
    * @param colors the series renderers colors
    * @return the bar multiple series renderer
    */
+  //柱状图的建立渲染器方法
   protected XYMultipleSeriesRenderer buildBarRenderer(int[] colors) {
     XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
     renderer.setAxisTitleTextSize(16);

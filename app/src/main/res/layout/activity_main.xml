@@ -44,4 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="start"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/draw"
+        android:layout_alignParentBottom="true"
+        android:text="Draw"/>
 </RelativeLayout>

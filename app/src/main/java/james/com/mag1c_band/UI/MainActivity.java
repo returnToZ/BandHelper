@@ -42,6 +42,7 @@ public class MainActivity extends Activity {
     ImageView share;
     ImageView chat;
     Button start;
+    Button draw;
     final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
             {
                     SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SINA,
@@ -65,7 +66,15 @@ public class MainActivity extends Activity {
         share = (ImageView)findViewById(R.id.share);
         chat = (ImageView)findViewById(R.id.chat);
         start = (Button)findViewById(R.id.start);
+        draw = (Button)findViewById(R.id.draw);
         MainInstance = this;
+        draw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),TestActivity.class);
+                startActivity(intent);
+            }
+        });
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

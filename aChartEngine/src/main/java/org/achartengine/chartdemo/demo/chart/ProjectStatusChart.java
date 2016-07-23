@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2009 - 2013 SC 4ViewSoft SRL
- *  
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
- *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,69 +32,76 @@ import android.graphics.Color;
  * Project status demo chart.
  */
 public class ProjectStatusChart extends AbstractDemoChart {
-  /**
-   * Returns the chart name.
-   * 
-   * @return the chart name
-   */
-  public String getName() {
-    return "Project tickets status";
-  }
-
-  /**
-   * Returns the chart description.
-   * 
-   * @return the chart description
-   */
-  public String getDesc() {
-    return "The opened tickets and the fixed tickets (time chart)";
-  }
-
-  /**
-   * Executes the chart demo.
-   * 
-   * @param context the context
-   * @return the built intent
-   */
-  public Intent execute(Context context) {
-    String[] titles = new String[] { "New tickets", "Fixed tickets" };
-    List<Date[]> dates = new ArrayList<Date[]>();
-    List<double[]> values = new ArrayList<double[]>();
-    int length = titles.length;
-    for (int i = 0; i < length; i++) {
-      dates.add(new Date[12]);
-      dates.get(i)[0] = new Date(108, 9, 1);
-      dates.get(i)[1] = new Date(108, 9, 8);
-      dates.get(i)[2] = new Date(108, 9, 15);
-      dates.get(i)[3] = new Date(108, 9, 22);
-      dates.get(i)[4] = new Date(108, 9, 29);
-      dates.get(i)[5] = new Date(108, 10, 5);
-      dates.get(i)[6] = new Date(108, 10, 12);
-      dates.get(i)[7] = new Date(108, 10, 19);
-      dates.get(i)[8] = new Date(108, 10, 26);
-      dates.get(i)[9] = new Date(108, 11, 3);
-      dates.get(i)[10] = new Date(108, 11, 10);
-      dates.get(i)[11] = new Date(108, 11, 17);
+    /**
+     * Returns the chart name.
+     *
+     * @return the chart name
+     */
+    public String getName() {
+        return "Project tickets status";
     }
-    values.add(new double[] { 142, 123, 142, 152, 149, 122, 110, 120, 125, 155, 146, 150 });
-    values.add(new double[] { 102, 90, 112, 105, 125, 112, 125, 112, 105, 115, 116, 135 });
-    length = values.get(0).length;
-    int[] colors = new int[] { Color.BLUE, Color.GREEN };
-    PointStyle[] styles = new PointStyle[] { PointStyle.POINT, PointStyle.POINT };
-    XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-    setChartSettings(renderer, "Project work status", "Date", "Tickets", dates.get(0)[0].getTime(),
-        dates.get(0)[11].getTime(), 50, 190, Color.GRAY, Color.LTGRAY);
-    renderer.setXLabels(0);
-    renderer.setYLabels(10);
-    renderer.addYTextLabel(100, "test");
-    length = renderer.getSeriesRendererCount();
-    for (int i = 0; i < length; i++) {
-      XYSeriesRenderer seriesRenderer = (XYSeriesRenderer) renderer.getSeriesRendererAt(i);
-      seriesRenderer.setDisplayChartValues(true);
+
+    /**
+     * Returns the chart description.
+     *
+     * @return the chart description
+     */
+    public String getDesc() {
+        return "The opened tickets and the fixed tickets (time chart)";
     }
-    renderer.setXRoundedLabels(false);
-    return ChartFactory.getTimeChartIntent(context, buildDateDataset(titles, dates, values),
-        renderer, "MM/dd/yyyy");
-  }
+
+    /**
+     * Executes the chart demo.
+     *
+     * @param context the context
+     * @return the built intent
+     */
+    public Intent execute(Context context) {
+        String[] titles = new String[]{"New tickets", "Fixed tickets"};
+        List<Date[]> dates = new ArrayList<Date[]>();
+        List<double[]> values = new ArrayList<double[]>();
+        List<double[]> data = new ArrayList<double[]>();
+        data.add(new double[]{1,2,3,4,5});
+        data.add(new double[]{1,2,3,4,5});
+        int length = titles.length;
+        for (int i = 0; i < length; i++)
+        {
+            dates.add(new Date[12]);
+            dates.get(i)[0] = new Date(108, 9, 1);
+            dates.get(i)[1] = new Date(108, 9, 8);
+            dates.get(i)[2] = new Date(108, 9, 15);
+            dates.get(i)[3] = new Date(108, 9, 22);
+            dates.get(i)[4] = new Date(108, 9, 29);
+            dates.get(i)[5] = new Date(108, 10, 5);
+            dates.get(i)[6] = new Date(108, 10, 12);
+            dates.get(i)[7] = new Date(108, 10, 19);
+            dates.get(i)[8] = new Date(108, 10, 26);
+            dates.get(i)[9] = new Date(108, 11, 3);
+            dates.get(i)[10] = new Date(108, 11, 10);
+            dates.get(i)[11] = new Date(108, 11, 17);
+        }
+        values.add(new double[]{142, 123, 142, 152, 149, 122, 110, 120, 125, 155, 146, 150});
+        values.add(new double[]{102, 90, 112, 105, 125, 112, 125, 112, 105, 115, 116, 135});
+        length = values.get(0).length;
+        int[] colors = new int[]{Color.BLUE, Color.GREEN};
+        PointStyle[] styles = new PointStyle[]{PointStyle.POINT, PointStyle.POINT};
+        XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
+        setChartSettings(renderer, "Project work status", "Date", "Tickets", dates.get(0)[0].getTime(),
+                dates.get(0)[11].getTime(), 50, 190, Color.GRAY, Color.LTGRAY);
+        renderer.setXLabels(0);//x轴标签大小
+        renderer.setYLabels(10);//y轴标签大小
+        renderer.addYTextLabel(100, "test");//Y轴值为100处的字为test
+        length = renderer.getSeriesRendererCount();//渲染器的个数
+        for (int i = 0; i < length; i++)
+        {
+            XYSeriesRenderer seriesRenderer = (XYSeriesRenderer) renderer.getSeriesRendererAt(i);//获取第i个渲染器
+            seriesRenderer.setDisplayChartValues(true);//是否在图上显示具体数值
+        }
+        renderer.setXRoundedLabels(false);
+        //return ChartFactory.getTimeChartIntent(context, buildDateDataset(titles, dates, values),
+        //    renderer, "MM/dd/yyyy");
+
+        return ChartFactory.getLineChartIntent(context, buildDataset(titles, data, values),renderer,"HelloWorld");
+    }
 
 }

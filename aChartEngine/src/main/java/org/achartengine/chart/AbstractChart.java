@@ -378,7 +378,6 @@ public abstract class AbstractChart implements Serializable {
    * @return the legend shape width
    */
   public abstract int getLegendShapeWidth(int seriesIndex);
-
   /**
    * The graphical representation of the legend shape.
    * 
