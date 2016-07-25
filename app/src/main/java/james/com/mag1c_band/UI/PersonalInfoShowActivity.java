@@ -18,6 +18,7 @@ public class PersonalInfoShowActivity extends Activity{
     TextView mail;//mail
     TextView address;//address
     TextView sex;//sex
+    TextView status;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -27,8 +28,9 @@ public class PersonalInfoShowActivity extends Activity{
         nickname = (TextView)findViewById(R.id.nickname);
         phone_number = (TextView)findViewById(R.id.phone_number);
         mail = (TextView)findViewById(R.id.mail);
-        address = (TextView)findViewById(R.id.address);
+        address = (TextView)findViewById(R.id.birthday);
         sex = (TextView)findViewById(R.id.my_sex);
+        status = (TextView)findViewById(R.id.status);
         showPersonal();
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +41,7 @@ public class PersonalInfoShowActivity extends Activity{
             }
         });
     }
-    protected void showPersonal(){
+    private void showPersonal(){
         SharedPreferences pref = getSharedPreferences("personal_data",MODE_PRIVATE);
         nickname.setText(pref.getString("nickname","尚未填写"));
         phone_number.setText(pref.getString("phone_number","尚未填写"));

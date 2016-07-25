@@ -178,7 +178,7 @@ public class LoginActivity extends Activity{
                 {
                     e.printStackTrace();
                 }
-                //发送post请求 以下为学生的情况
+                //发送post请求
                     try
                     {
                         jsonRequest = new JsonObjectRequest(

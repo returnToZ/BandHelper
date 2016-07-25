@@ -89,6 +89,8 @@ public class ChartService {
         multipleSeriesRenderer.setXAxisMax(Xmax);
         multipleSeriesRenderer.setXLabels(10);
         multipleSeriesRenderer.setYLabels(10);
+        multipleSeriesRenderer.setXLabelsColor(Color.BLACK);
+        multipleSeriesRenderer.setYLabelsColor(0,Color.BLACK);
         multipleSeriesRenderer.setXLabelsAlign(Align.RIGHT);
         multipleSeriesRenderer.setYLabelsAlign(Align.RIGHT);
         multipleSeriesRenderer.setAxisTitleTextSize(30);

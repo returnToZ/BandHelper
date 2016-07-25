@@ -16,6 +16,7 @@ public class PersonalInfoEditActivity extends Activity {
     EditText phone_number;//phone_number
     EditText mail;//mail
     EditText address;//address
+    EditText status;
     EditText sex;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,8 +26,9 @@ public class PersonalInfoEditActivity extends Activity {
         nickname = (EditText)findViewById(R.id.nickname);
         phone_number = (EditText)findViewById(R.id.phone_number);
         mail = (EditText)findViewById(R.id.mail);
-        address = (EditText)findViewById(R.id.address);
+        address = (EditText)findViewById(R.id.birthday);
         sex = (EditText)findViewById(R.id.my_sex);
+        status = (EditText)findViewById(R.id.status);
         showPersonal();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,22 +40,9 @@ public class PersonalInfoEditActivity extends Activity {
             }
         });
     }
-    protected void setPersonal(){//设置个人信息
-        SharedPreferences.Editor editor = getSharedPreferences("personal_data",MODE_PRIVATE).edit();
-        editor.putString("nickname",nickname.getText().toString());
-        editor.putString("phone_number",phone_number.getText().toString());
-        editor.putString("mail",mail.getText().toString());
-        editor.putString("address",address.getText().toString());
-        editor.putString("sex", sex.getText().toString());
-        editor.apply();
+    private void setPersonal(){//设置个人信息
     }
-    protected void showPersonal(){//读取文件中的个人信息
-        SharedPreferences pref = getSharedPreferences("personal_data", MODE_PRIVATE);
-        nickname.setText(pref.getString("nickname", "尚未填写"));
-        phone_number.setText(pref.getString("phone_number", "尚未填写"));
-        mail.setText(pref.getString("mail", "尚未填写"));
-        address.setText(pref.getString("address", "尚未填写"));
-        sex.setText(pref.getString("sex", "尚未填写"));
+    private void showPersonal(){//读取文件中的个人信息
     }
 
 }
