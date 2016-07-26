@@ -95,6 +95,22 @@ def band_save_profile(request):
 #从服务器获取个人资料信息
 def band_get_profile(request):
 	if request.method == 'POST':
-		return HttpResponse("Working")
+		recv = simplejson.loads(request.body)
+		mUsername = recv["username"]
+		try:
+			key = Personal.objects.get(username = mUsername)
+			dict = {}
+			dict["nickname"] = key.nickname
+			dict["telephone"] = key.telephone
+			dict["sex"] = key.sex
+			dict["birthday"] = key.birthday
+			dict["email"] = key.email
+			dict["status"] = key.status
+			dict["result"] = "success"
+			return JsonResponse(dict)
+		except Personal.DoesNotExist:
+			dict = {}
+			dict["result"] = "not_exist"
+			return JsonResponse(dict)
 	else:
 		return HttpResponse("Working")

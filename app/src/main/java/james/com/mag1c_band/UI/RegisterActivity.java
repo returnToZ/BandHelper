@@ -22,25 +22,24 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import james.com.mag1c_band.Data.Account;
+import james.com.mag1c_band.Data.Symbol;
 import james.com.mag1c_band.Data.URL;
 import james.com.mag1c_band.R;
 import james.com.mag1c_band.Util.MD5;
 import james.com.mag1c_band.Util.Utils;
 
 public class RegisterActivity extends Activity{
-    Button register;
-    Button cancel;
-    EditText mPassword;
-    EditText mUsername;
-    EditText nickname;
-    EditText mConfirm;
-    String username;
-    String password;
-    String confirm;
-    String signal;
-    String encryptPassword;
-    final int SUCCESS_SYMBOL = 1;
-    RequestQueue mQueue;
+    private Button register;
+    private Button cancel;
+    private EditText mPassword;
+    private EditText mUsername;
+    private EditText mConfirm;
+    private String username;
+    private String password;
+    private String confirm;
+    private String signal;
+    private RequestQueue mQueue;
     public static RegisterActivity registerActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,10 +98,13 @@ public class RegisterActivity extends Activity{
             public void handleMessage(Message msg){
                 super.handleMessage(msg);
                 String answer = null;
-                if (msg.what == SUCCESS_SYMBOL)
+                if (msg.what == Symbol.RETURN_SUCCESS)
                 {
                     Bundle bundle = msg.getData();
                     answer = bundle.getString("result");
+                }else if (msg.what == Symbol.RETURN_FAIL){
+                    Toast.makeText(registerActivity,"服务器错误,请稍后再试",Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (answer == null){
                     Toast.makeText(registerActivity,"未知错误",Toast.LENGTH_SHORT).show();
@@ -121,16 +123,13 @@ public class RegisterActivity extends Activity{
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Account account = new Account(username,password);
                 mQueue = Volley.newRequestQueue(RegisterActivity.registerActivity);
                 JsonObjectRequest jsonRequest;
                 JSONObject jsonObject = null;
-                /*
-                加盐 两次MD5 增加破解难度
-                 */
-                encryptPassword = MD5.getMD5(MD5.getMD5("hello" + password + "world"));
                 try
                 {
-                    jsonObject = new JSONObject("{username:" + username + ",password:" + encryptPassword + "}");
+                    jsonObject = new JSONObject(account.toJson());
                     Log.d("Sending_Message", jsonObject.toString());
                 } catch (Exception e)
                 {
@@ -154,7 +153,7 @@ public class RegisterActivity extends Activity{
                                         Bundle bundle = new Bundle();
                                         bundle.putString("result", signal);
                                         msg.setData(bundle);
-                                        msg.what = SUCCESS_SYMBOL;
+                                        msg.what = Symbol.RETURN_SUCCESS;
                                         handler.sendMessage(msg);
                                     } catch (JSONException e)
                                     {
@@ -170,6 +169,9 @@ public class RegisterActivity extends Activity{
                     });
                     mQueue.add(jsonRequest);
                     Log.d("The_Whole_JsonRequest", jsonRequest.toString());
+                    Message msg = new Message();
+                    msg.what = Symbol.RETURN_FAIL;
+                    handler.sendMessage(msg);
                 } catch (Exception e)
                 {
                     e.printStackTrace();
@@ -185,7 +187,6 @@ public class RegisterActivity extends Activity{
         cancel.getBackground().setAlpha(0);
         mUsername = (EditText)findViewById(R.id.account);
         mPassword = (EditText)findViewById(R.id.password);
-        nickname = (EditText)findViewById(R.id.nickname);
         mConfirm = (EditText)findViewById(R.id.confirm_password);
         registerActivity = this;
         mQueue = Volley.newRequestQueue(RegisterActivity.registerActivity);

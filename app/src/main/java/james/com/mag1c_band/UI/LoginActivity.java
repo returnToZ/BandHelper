@@ -23,24 +23,24 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import james.com.mag1c_band.Data.Account;
+import james.com.mag1c_band.Data.Symbol;
 import james.com.mag1c_band.Data.URL;
 import james.com.mag1c_band.R;
 import james.com.mag1c_band.Util.MD5;
 import james.com.mag1c_band.Util.Utils;
 
 public class LoginActivity extends Activity{
-    Button login;
-    Button register;
-    String password;
-    String username;
-    EditText mPassword;
-    EditText mUsername;
-    RequestQueue mQueue;
-    CheckBox rememberPassword;
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
-    String encryptPassword;
-    private final int RETURN_SYMBOL = 1;
+    private Button login;
+    private Button register;
+    private String password;
+    private String username;
+    private EditText mPassword;
+    private EditText mUsername;
+    private RequestQueue mQueue;
+    private CheckBox rememberPassword;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     private String signal = "result";//存储服务器端返回的结果
     public static LoginActivity loginActivity = null;
     @Override
@@ -107,17 +107,20 @@ public class LoginActivity extends Activity{
         checkPassword();
     }
 
-    public void checkPassword() {
+    private void checkPassword() {
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 String answer = "";
-                if (msg.what == RETURN_SYMBOL)
+                if (msg.what == Symbol.RETURN_SUCCESS)
                 {
                     Bundle bundle = msg.getData();
                     answer = bundle.getString("result");
                     Log.d("TAG",answer);
+                }else if (msg.what == Symbol.RETURN_FAIL){
+                    Toast.makeText(loginActivity,"服务器错误,请稍后再试",Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (answer == null){
                     Toast.makeText(loginActivity,"未知错误",Toast.LENGTH_SHORT).show();
@@ -163,16 +166,12 @@ public class LoginActivity extends Activity{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mQueue = Volley.newRequestQueue(LoginActivity.loginActivity);
                 JsonObjectRequest jsonRequest;
                 JSONObject jsonObject = null;
-                /*
-                加盐 两次MD5 增加破解难度
-                 */
-                encryptPassword = MD5.getMD5(MD5.getMD5("hello" + password + "world"));
+                Account account = new Account(username,password);
                 try
                 {
-                    jsonObject = new JSONObject("{username:" + username + ",password:" + encryptPassword + "}");
+                    jsonObject = new JSONObject(account.toJson());
                     Log.d("Sending_Message", jsonObject.toString());
                 } catch (Exception e)
                 {
@@ -196,7 +195,7 @@ public class LoginActivity extends Activity{
                                             Bundle bundle = new Bundle();
                                             bundle.putString("result", signal);
                                             msg.setData(bundle);
-                                            msg.what = RETURN_SYMBOL;
+                                            msg.what = Symbol.RETURN_SUCCESS;
                                             handler.sendMessage(msg);
                                         } catch (JSONException e)
                                         {
@@ -208,6 +207,9 @@ public class LoginActivity extends Activity{
                             @Override
                             public void onErrorResponse(VolleyError arg0) {
                                 Log.d("Failure_Message", arg0.toString());
+                                Message msg = new Message();
+                                msg.what = Symbol.RETURN_FAIL;
+                                handler.sendMessage(msg);
                             }
                         });
                         mQueue.add(jsonRequest);
@@ -230,5 +232,6 @@ public class LoginActivity extends Activity{
         editor = getSharedPreferences("login_data",MODE_PRIVATE).edit();
         login.getBackground().setAlpha(0);
         register.getBackground().setAlpha(0);
+        mQueue = Volley.newRequestQueue(LoginActivity.loginActivity);
     }
 }
