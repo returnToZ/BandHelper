@@ -232,6 +232,7 @@ public class LoginActivity extends Activity{
         editor = getSharedPreferences("login_data",MODE_PRIVATE).edit();
         login.getBackground().setAlpha(0);
         register.getBackground().setAlpha(0);
+        loginActivity = this;
         mQueue = Volley.newRequestQueue(LoginActivity.loginActivity);
     }
 }
