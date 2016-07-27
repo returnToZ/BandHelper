@@ -21,10 +21,10 @@ class Account(models.Model):
 		return self.password
 
 class Personal(models.Model):
-	account = models.ForeignKey('Account',primary_key = True)#整个对象是一个属性
+	username = models.CharField(max_length = 20,unique = True)
 	nickname = models.CharField(max_length = 40)
-	sex = models.CharField(max_length = 2)
-	telphone = models.CharField(max_length = 20)
+	sex = models.CharField(max_length = 10)
+	telephone = models.CharField(max_length = 20)
 	email = models.CharField(max_length = 40)
 	status = models.CharField(max_length = 200)
 	birthday = models.CharField(max_length = 20)

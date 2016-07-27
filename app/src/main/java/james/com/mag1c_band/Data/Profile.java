@@ -75,11 +75,18 @@ public class Profile {
         this.telephone = telephone;
     }
 
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
     //主要信息有 1.账号信息 2.昵称 3.性别 4.手机 5.邮箱 6.出生日期 7.状态
-    @Override
-    public String toString() {
+    public String toJson() {
         return "{username:" + username + ",nickname:" + nickname +
-                ",birthday:" + getBirthday(1) + ",telephone::" + telephone +
+                ",birthday:" + getBirthday(1) + ",telephone:" + telephone +
                 ",sex:" + sex + ",email:" + email + ",status:" + status + "}";
     }
 

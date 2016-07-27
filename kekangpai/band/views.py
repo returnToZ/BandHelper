@@ -71,7 +71,7 @@ def band_save_profile(request):
 		mBirthday = recv["birthday"]
 		# 根据django文档 下述两种情况应当可以合并
 		try:  # 若本身在数据库中已存在资料信息 则修改之
-			key = Personal.objects.get(username=mUsername)
+			key = Personal.objects.get(username = mUsername)
 			key.nickname = mNickname
 			key.birthday = mBirthday
 			key.sex = mSex
@@ -108,7 +108,7 @@ def band_get_profile(request):
 			dict["status"] = key.status
 			dict["result"] = "success"
 			return JsonResponse(dict)
-		except Personal.DoesNotExist:
+		except	Personal.DoesNotExist:
 			dict = {}
 			dict["result"] = "not_exist"
 			return JsonResponse(dict)

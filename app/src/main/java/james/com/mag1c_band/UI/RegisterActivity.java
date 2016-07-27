@@ -165,13 +165,12 @@ public class RegisterActivity extends Activity{
                         @Override
                         public void onErrorResponse(VolleyError arg0) {
                             Log.d("Failure_Message", arg0.toString());
+                            Message msg = new Message();
+                            msg.what = Symbol.RETURN_FAIL;
+                            handler.sendMessage(msg);
                         }
                     });
                     mQueue.add(jsonRequest);
-                    Log.d("The_Whole_JsonRequest", jsonRequest.toString());
-                    Message msg = new Message();
-                    msg.what = Symbol.RETURN_FAIL;
-                    handler.sendMessage(msg);
                 } catch (Exception e)
                 {
                     e.printStackTrace();

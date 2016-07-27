@@ -25,13 +25,12 @@ import org.json.JSONObject;
 import james.com.mag1c_band.Data.Symbol;
 import james.com.mag1c_band.Data.URL;
 import james.com.mag1c_band.R;
-import james.com.mag1c_band.Util.MD5;
 
 public class PersonalInfoShowActivity extends Activity{
     private Button edit;
     private TextView nickname;//nickname
-    private TextView phone_number;//phone_number
-    private TextView mail;//mail
+    private TextView telephone;//telephone
+    private TextView email;//email
     private TextView address;//address
     private TextView sex;//sex
     private TextView status;
@@ -68,7 +67,7 @@ public class PersonalInfoShowActivity extends Activity{
                     Toast.makeText(personalInfoShowActivity,"资料更新成功",Toast.LENGTH_SHORT).show();
                 }else if (msg.what == Symbol.RETURN_FAIL){
                     Toast.makeText(personalInfoShowActivity,"服务器错误,请稍后再试",Toast.LENGTH_SHORT).show();
-                    showLocalProfile();
+                    showLocalProfile();//没读到数据 则直接读本地的
                     return;
                 }
             }
@@ -151,7 +150,7 @@ public class PersonalInfoShowActivity extends Activity{
             setInfo.putString("birthday",reponse.getString("birthday"));
             setInfo.putString("status",reponse.getString("status"));
             setInfo.commit();
-            showLocalProfile();
+            showLocalProfile();//更新成功后读取本地数据
         } catch (JSONException e)
         {
             e.printStackTrace();
@@ -166,8 +165,8 @@ public class PersonalInfoShowActivity extends Activity{
      */
     private void showLocalProfile(){//读取本地的个人信息
         nickname.setText(getInfo.getString("nickname","尚未填写"));
-        phone_number.setText(getInfo.getString("phone_number","尚未填写"));
-        mail.setText(getInfo.getString("mail","尚未填写"));
+        telephone.setText(getInfo.getString("telephone","尚未填写"));
+        email.setText(getInfo.getString("email","尚未填写"));
         address.setText(getInfo.getString("address", "尚未填写"));
         sex.setText(getInfo.getString("sex", "尚未填写"));
         status.setText(getInfo.getString("status","尚未填写"));
@@ -179,8 +178,8 @@ public class PersonalInfoShowActivity extends Activity{
         edit = (Button)findViewById(R.id.edit_profile);
         edit.getBackground().setAlpha(0);
         nickname = (TextView)findViewById(R.id.nickname);
-        phone_number = (TextView)findViewById(R.id.phone_number);
-        mail = (TextView)findViewById(R.id.mail);
+        telephone = (TextView)findViewById(R.id.phone_number);
+        email = (TextView)findViewById(R.id.mail);
         address = (TextView)findViewById(R.id.birthday);
         sex = (TextView)findViewById(R.id.my_sex);
         status = (TextView)findViewById(R.id.status);
