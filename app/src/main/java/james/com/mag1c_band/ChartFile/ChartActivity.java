@@ -32,9 +32,9 @@ public class ChartActivity extends Activity {
         //mRightCurveLayout = (LinearLayout) findViewById(R.id.right_temperature_curve);
 
         mService = new ChartService(this);
-        mService.setXYMultipleSeriesDataset("左温度曲线");
+        mService.setXYMultipleSeriesDataset("温度曲线");
         mService.setXYMultipleSeriesRenderer(100, 50, "左温度曲线", "时间", "温度",
-                Color.RED, Color.RED, Color.RED, Color.BLACK);
+                Color.BLUE, Color.RED, Color.LTGRAY, Color.GREEN);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
         mView = mService.getGraphicalView();
 
         /*

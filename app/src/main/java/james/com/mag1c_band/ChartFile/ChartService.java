@@ -89,14 +89,15 @@ public class ChartService {
         multipleSeriesRenderer.setXAxisMax(Xmax);
         multipleSeriesRenderer.setXLabels(10);
         multipleSeriesRenderer.setYLabels(10);
-        multipleSeriesRenderer.setXLabelsColor(Color.BLACK);
-        multipleSeriesRenderer.setYLabelsColor(0,Color.BLACK);
+        multipleSeriesRenderer.setXLabelsColor(Color.WHITE);
+        multipleSeriesRenderer.setYLabelsColor(0,Color.WHITE);
         multipleSeriesRenderer.setXLabelsAlign(Align.RIGHT);
         multipleSeriesRenderer.setYLabelsAlign(Align.RIGHT);
         multipleSeriesRenderer.setAxisTitleTextSize(30);
         multipleSeriesRenderer.setChartTitleTextSize(30);
         multipleSeriesRenderer.setLabelsTextSize(30);
         multipleSeriesRenderer.setLegendTextSize(20);
+        multipleSeriesRenderer.setShowLegend(false);//不显示图例
         multipleSeriesRenderer.setPointSize(10f);//曲线描点尺寸
         multipleSeriesRenderer.setFitLegend(true);
         multipleSeriesRenderer.setMargins(new int[]{20, 30, 15, 20});
@@ -105,10 +106,11 @@ public class ChartService {
         multipleSeriesRenderer.setAxesColor(axeColor);
         multipleSeriesRenderer.setGridColor(gridColor);
         multipleSeriesRenderer.setDisplayValues(true);
-        multipleSeriesRenderer.setBackgroundColor(Color.WHITE);//背景色
-        multipleSeriesRenderer.setMarginsColor(Color.WHITE);//边距背景色，默认背景色为黑色，这里修改为白色
+        multipleSeriesRenderer.setApplyBackgroundColor(true);
+        multipleSeriesRenderer.setBackgroundColor(Color.BLACK);//背景色 必须和上面那条连用
+        multipleSeriesRenderer.setMarginsColor(Color.BLACK);//边距背景色，默认背景色为黑色，这里修改为白色
         mRenderer = new XYSeriesRenderer();
-        mRenderer.setColor(curveColor);
+        mRenderer.setColor(Color.BLUE);
         mRenderer.setPointStyle(PointStyle.CIRCLE);//描点风格，可以为圆点，方形点等等
         mRenderer.setFillPoints(true);
         multipleSeriesRenderer.addSeriesRenderer(mRenderer);
