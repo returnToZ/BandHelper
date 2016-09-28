@@ -1,5 +1,6 @@
 package james.com.mag1c_band.Util;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
