@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Utils {
+    public static boolean isReceiver = false;
+    public static boolean isConnect = false;
     /**
      * 检测当的网络（WLAN、3G/2G）状态
      *
@@ -70,4 +72,16 @@ public class Utils {
             return null;
         }
     }
+    public static String bytesToHexString(byte[] bytes) {
+        String result = "";
+        for (int i = 0; i < bytes.length; i++) {
+            String hexString = Integer.toHexString(bytes[i] & 0xFF);
+            if (hexString.length() == 1) {
+                hexString = '0' + hexString;
+            }
+            result += hexString.toUpperCase();
+        }
+        return result;
+    }
+
 }

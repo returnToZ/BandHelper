@@ -1,4 +1,4 @@
-package james.com.mag1c_band.UI;
+package james.com.mag1c_band.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,9 +22,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import james.com.mag1c_band.Data.Profile;
-import james.com.mag1c_band.Data.Symbol;
-import james.com.mag1c_band.Data.URL;
+import james.com.mag1c_band.Model.Profile;
+import james.com.mag1c_band.Model.Symbol;
+import james.com.mag1c_band.Model.URL;
 import james.com.mag1c_band.R;
 
 public class PersonalInfoEditActivity extends Activity {

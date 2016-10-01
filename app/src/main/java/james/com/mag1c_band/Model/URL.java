@@ -1,4 +1,4 @@
-package james.com.mag1c_band.Data;
+package james.com.mag1c_band.Model;
 
 public class URL {
     public static final String LOGIN_URL = "http://123.206.29.111/band_login/";

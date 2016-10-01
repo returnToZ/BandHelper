@@ -1,4 +1,4 @@
-package james.com.mag1c_band.Data;
+package james.com.mag1c_band.Model;
 
 public class Profile {
     //下面是个人信息表

@@ -1,4 +1,4 @@
-package james.com.mag1c_band.Data;
+package james.com.mag1c_band.Model;
 
 import james.com.mag1c_band.Util.MD5;
 

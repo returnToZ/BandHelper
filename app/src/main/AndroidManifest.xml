@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -25,26 +27,28 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".UI.LoginActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UI.MainActivity"/>
-        <activity android:name=".UI.SettingActivity"/>
-        <activity android:name=".UI.PersonalInfoShowActivity"/>
-        <activity android:name=".UI.MyDeviceActivity"/>
-        <activity android:name=".UI.AboutActivity"/>
-        <activity android:name=".UI.HelpActivity"/>
-        <activity android:name=".UI.ServiceActivity"/>
-        <activity android:name=".UI.RegisterActivity"/>
-        <activity android:name=".UI.PersonalInfoEditActivity"/>
-        <activity android:name=".UI.ExitWindow" android:theme="@style/ExitWindow"/>
-        <activity android:name=".UI.ChatActivity"/>
+        <activity android:name=".Activity.MainActivity"/>
+        <activity android:name=".Activity.SettingActivity"/>
+        <activity android:name=".Activity.PersonalInfoShowActivity"/>
+        <activity android:name=".Activity.MyDeviceActivity"/>
+        <activity android:name=".Activity.AboutActivity"/>
+        <activity android:name=".Activity.HelpActivity"/>
+        <activity android:name=".Activity.ServiceActivity"/>
+        <activity android:name=".Activity.RegisterActivity"/>
+        <activity android:name=".Activity.PersonalInfoEditActivity"/>
+        <activity android:name=".Activity.ExitWindow" android:theme="@style/ExitWindow"/>
+        <activity android:name=".Activity.ChatActivity"/>
         <activity android:name=".ChartFile.ChartActivity"/>
-        <activity android:name=".UI.TestActivity"/>
+        <activity android:name=".Activity.TestActivity"/>
+        <activity android:name=".Activity.BluetoothActivity"/>
+        <activity android:name=".Activity.Test"/>
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:theme="@style/Theme.UMDefault"

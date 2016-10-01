@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <ImageView
         android:id="@+id/setting"
@@ -58,6 +58,6 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="70dp"
-        android:layout_marginBottom="300dp">
+        android:layout_marginBottom="150dp">
     </LinearLayout>
 </RelativeLayout>

@@ -87,7 +87,7 @@ public class ChartService {
         multipleSeriesRenderer.setLabelsColor(labelColor);
         multipleSeriesRenderer.setXAxisMin(Xmin);
         multipleSeriesRenderer.setXAxisMax(Xmax);
-        multipleSeriesRenderer.setXLabels(10);
+        multipleSeriesRenderer.setXLabels(5);
         multipleSeriesRenderer.setYLabels(10);
         multipleSeriesRenderer.setXLabelsColor(Color.BLACK);
         multipleSeriesRenderer.setYLabelsColor(0,Color.BLACK);
@@ -95,7 +95,7 @@ public class ChartService {
         multipleSeriesRenderer.setYLabelsAlign(Align.RIGHT);
         multipleSeriesRenderer.setAxisTitleTextSize(30);
         multipleSeriesRenderer.setChartTitleTextSize(30);
-        multipleSeriesRenderer.setLabelsTextSize(30);
+        multipleSeriesRenderer.setLabelsTextSize(20);
         multipleSeriesRenderer.setLegendTextSize(20);
         multipleSeriesRenderer.setShowLegend(false);//不显示图例
         multipleSeriesRenderer.setPointSize(10f);//曲线描点尺寸

@@ -1,4 +1,4 @@
-package james.com.mag1c_band.UI;
+package james.com.mag1c_band.Activity;
 
 import android.content.Context;
 import android.util.Log;

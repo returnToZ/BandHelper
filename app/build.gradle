@@ -7,7 +7,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "james.com.mag1c_band"
-        minSdkVersion 18
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

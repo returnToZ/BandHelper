@@ -5,6 +5,6 @@ public class KalmanAlgorithm {
     private float lastX = 0;
 
     public float processData(float data){
-        
+        return 1f;
     }
 }
