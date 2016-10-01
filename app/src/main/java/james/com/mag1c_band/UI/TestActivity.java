@@ -8,8 +8,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 
-import james.com.mag1c_band.R;
-
 public class TestActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){

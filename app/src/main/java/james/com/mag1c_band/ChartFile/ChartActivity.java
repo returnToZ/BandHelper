@@ -18,9 +18,8 @@ import james.com.mag1c_band.R;
 public class ChartActivity extends Activity {
 
     private LinearLayout mLeftCurveLayout;//存放左图表的布局容器
-    private LinearLayout mRightCurveLayout;//存放右图表的布局容器
-    private GraphicalView mView, mView2;//左右图表
-    private ChartService mService, mService2;
+    private GraphicalView mView;//左右图表
+    private ChartService mService;
     private Timer timer;
 
     @Override
@@ -28,29 +27,16 @@ public class ChartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
-        mLeftCurveLayout = (LinearLayout) findViewById(R.id.left_temperature_curve);
-        //mRightCurveLayout = (LinearLayout) findViewById(R.id.right_temperature_curve);
+        mLeftCurveLayout = (LinearLayout) findViewById(R.id.step_chart);
 
         mService = new ChartService(this);
-        mService.setXYMultipleSeriesDataset("温度曲线");
-        mService.setXYMultipleSeriesRenderer(100, 50, "左温度曲线", "时间", "温度",
-                Color.BLUE, Color.RED, Color.LTGRAY, Color.GREEN);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
+        mService.setXYMultipleSeriesDataset("步数曲线");
+        mService.setXYMultipleSeriesRenderer(100, 50, "步数曲线", "时间", "温度",
+                Color.BLUE, Color.RED, Color.LTGRAY, Color.BLACK);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
         mView = mService.getGraphicalView();
 
-        /*
-        mService2 = new ChartService(this);
-        mService2.setXYMultipleSeriesDataset("右温度曲线");
-        mService2.setXYMultipleSeriesRenderer(100, 100, "右温度曲线", "时间", "温度",
-                Color.RED, Color.RED, Color.RED, Color.BLACK);
-        mView2 = mService2.getGraphicalView();
-        */
-        //将左右图表添加到布局容器中
         mLeftCurveLayout.addView(mView, new LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        /*
-        mRightCurveLayout.addView(mView2, new LayoutParams(
-                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-                */
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -60,13 +46,7 @@ public class ChartActivity extends Activity {
             }
         }, 3000, 3000);
     }
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-*/
+
     private int t = 0;
     private Handler handler = new Handler() {
         @Override

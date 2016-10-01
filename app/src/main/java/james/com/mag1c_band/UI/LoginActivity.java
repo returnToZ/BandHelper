@@ -27,7 +27,6 @@ import james.com.mag1c_band.Data.Account;
 import james.com.mag1c_band.Data.Symbol;
 import james.com.mag1c_band.Data.URL;
 import james.com.mag1c_band.R;
-import james.com.mag1c_band.Util.MD5;
 import james.com.mag1c_band.Util.Utils;
 
 public class LoginActivity extends Activity{
