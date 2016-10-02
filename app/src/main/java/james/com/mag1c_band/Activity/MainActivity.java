@@ -7,11 +7,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.socialize.PlatformConfig;
@@ -25,9 +27,10 @@ import org.achartengine.GraphicalView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import james.com.mag1c_band.ChartFile.ChartActivity;
 import james.com.mag1c_band.ChartFile.ChartService;
 import james.com.mag1c_band.R;
+import james.com.mag1c_band.Util.KalmanAlgorithm;
+import james.com.mag1c_band.Util.StepCount;
 import james.com.mag1c_band.Util.Utils;
 
 public class MainActivity extends Activity {
@@ -36,34 +39,44 @@ public class MainActivity extends Activity {
     private ImageView share;
     private ImageView chat;
     private Button start;
-    private Button draw;
     private LinearLayout mLeftCurveLayout;//存放左图表的布局容器
     private GraphicalView mView;//左右图表
     private ChartService mService;
     private Timer timer;
     private int t = 0;
+    private KalmanAlgorithm kalmanAlgorithm;
+    private StepCount stepCount;
+    private String stepData;
+    private TextView stepNum;
     final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
             {
-                    SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SINA,
-                    SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE,SHARE_MEDIA.DOUBAN
+                    SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.SINA,
+                    SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.DOUBAN
             };//分享功能
     public static MainActivity MainInstance = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Utils.isChartDataExists(this);
         initWidget();
         initListener();
         initChart();
         initKeys();
+        stepData = Utils.isChartDataExists(this);
+        if (stepData != null)
+        {
+            kalmanAlgorithm = new KalmanAlgorithm(stepData);
+            stepCount = new StepCount();
+        }
     }
-    private void initChart(){
+
+    private void initChart() {
         mLeftCurveLayout = (LinearLayout) findViewById(R.id.step_chart);
 
         mService = new ChartService(this);
         mService.setXYMultipleSeriesDataset("步数曲线");
-        mService.setXYMultipleSeriesRenderer(100, 50, "步数曲线", "时间", "温度",
+        mService.setXYMultipleSeriesRenderer(10000, 30000, "步数曲线", "时间", "温度",
                 Color.BLUE, Color.RED, Color.LTGRAY, Color.BLACK);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
         mView = mService.getGraphicalView();
 
@@ -76,46 +89,46 @@ public class MainActivity extends Activity {
             public void run() {
                 handler.sendMessage(handler.obtainMessage());
             }
-        }, 3000, 3000);
+        }, 50, 50);//更改时间
     }
+
     private Handler handler = new Handler() {
         @Override
         //定时更新图表
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            mService.updateChart(t, Math.random() * 100 % 50);
+            double temp = kalmanAlgorithm.Kalman();
+            Log.d("processedData", String.valueOf(temp));
+            mService.updateChart(t, temp);
             //mService2.updateChart(t, Math.random() * 100);
-            t+=5;
+            t += 3;
+            stepNum.setText(String.valueOf(stepCount.calcStep(temp, 0f, 0f, 0f)));
         }
     };
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (timer != null) {
+        if (timer != null)
+        {
             timer.cancel();
         }
     }
-    private void initWidget(){
-        setting = (ImageView)findViewById(R.id.setting);
-        share = (ImageView)findViewById(R.id.share);
-        chat = (ImageView)findViewById(R.id.chat);
-        start = (Button)findViewById(R.id.start);
-        draw = (Button)findViewById(R.id.draw);
+
+    private void initWidget() {
+        setting = (ImageView) findViewById(R.id.setting);
+        share = (ImageView) findViewById(R.id.share);
+        chat = (ImageView) findViewById(R.id.chat);
+        start = (Button) findViewById(R.id.start);
+        stepNum = (TextView) findViewById(R.id.step_num);
         MainInstance = this;
     }
-    private void initListener(){
-        draw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),TestActivity.class);
-                startActivity(intent);
-            }
-        });
+
+    private void initListener() {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),SettingActivity.class);
+                Intent intent = new Intent(view.getContext(), SettingActivity.class);
                 startActivity(intent);
             }
         });
@@ -132,7 +145,7 @@ public class MainActivity extends Activity {
                 UMImage image = new UMImage(MainActivity.this,
                         BitmapFactory.decodeResource(getResources(), R.drawable.pink));
                 new ShareAction(MainActivity.this).setDisplayList(displaylist)
-                        .withText( "test" )
+                        .withText("test")
                         .withTitle("title")//title参数对新浪、人人、豆瓣不生效
                         .withTargetUrl("Jameeeees.github.io")//文本中的目标地址
                         .withMedia(image)
@@ -158,12 +171,13 @@ public class MainActivity extends Activity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Test.class);
+                Intent intent = new Intent(getApplicationContext(), Test.class);
                 startActivity(intent);
             }
         });
     }
-    private void initKeys(){
+
+    private void initKeys() {
                 /*
         以下是分享功能的初始化设置,在这里填申请来的密钥,注意应放在程序的入口
          */
@@ -174,8 +188,9 @@ public class MainActivity extends Activity {
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         // QQ和Qzone appid appkey
     }
-    public void onBackPressed(){
-        Intent intent = new Intent(this,ExitWindow.class);
+
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ExitWindow.class);
         startActivity(intent);
     }
 }

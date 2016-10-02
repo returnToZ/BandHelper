@@ -23,7 +23,7 @@ public class ChartService {
     private XYSeriesRenderer mRenderer;// 单条曲线渲染器
     private Context context;
     public static int Xmin = 0;
-    public static int Xmax = 100;
+    public static int Xmax = 2000;// TODO: 2016/10/2
 
     public ChartService(Context context) {
         this.context = context;
@@ -98,8 +98,9 @@ public class ChartService {
         multipleSeriesRenderer.setLabelsTextSize(20);
         multipleSeriesRenderer.setLegendTextSize(20);
         multipleSeriesRenderer.setShowLegend(false);//不显示图例
-        multipleSeriesRenderer.setPointSize(10f);//曲线描点尺寸
+        //multipleSeriesRenderer.setPointSize(10f);//曲线描点尺寸
         multipleSeriesRenderer.setFitLegend(true);
+        multipleSeriesRenderer.setGridLineWidth(5f);//边框线条宽度
         multipleSeriesRenderer.setMargins(new int[]{30, 30, 30, 30});
         multipleSeriesRenderer.setShowGrid(true);
         multipleSeriesRenderer.setZoomEnabled(true, false);
@@ -111,8 +112,9 @@ public class ChartService {
         multipleSeriesRenderer.setMarginsColor(Color.WHITE);//边距背景色，默认背景色为黑色，这里修改为白色
         mRenderer = new XYSeriesRenderer();
         mRenderer.setColor(Color.BLUE);
-        mRenderer.setPointStyle(PointStyle.CIRCLE);//描点风格，可以为圆点，方形点等等
-        mRenderer.setFillPoints(true);
+        mRenderer.setLineWidth(3f);
+        //mRenderer.setPointStyle(PointStyle.CIRCLE);//描点风格，可以为圆点，方形点等等
+        //mRenderer.setFillPoints(true);
         multipleSeriesRenderer.addSeriesRenderer(mRenderer);
     }
 
@@ -130,9 +132,10 @@ public class ChartService {
         multipleSeriesDataset.addSeries(0,mSeries);
         //Xmin += 5;
         //Xmax += 5;
-        if (Xmin + x >= 90){//当图还有百分之十的空闲时开始平移背景
-            multipleSeriesRenderer.setXAxisMin(Xmin + x - 80);//始终留有百分之十的空余
-            multipleSeriesRenderer.setXAxisMax(Xmax + x - 80);
+        // TODO: 2016/10/2 原来是90
+        if (Xmin + x >= 1800){//当图还有百分之十的空闲时开始平移背景
+            multipleSeriesRenderer.setXAxisMin(Xmin + x - 1800);//始终留有百分之十的空余
+            multipleSeriesRenderer.setXAxisMax(Xmax + x - 1800);// TODO: 2016/10/2  原来是80
         }
         mGraphicalView.repaint();//此处也可以调用invalidate()
     }

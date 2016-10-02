@@ -42,14 +42,13 @@ public class Utils {
 
     public static String isChartDataExists(Context context) {
         File fileDir = new File(context.getFilesDir(), "data");
-        //File fileDir = new File(f, "data.txt");
         FileInputStream is;
         try
         {
             is = new FileInputStream(fileDir);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             byte[] array = new byte[1024];
-            int len = -1;
+            int len;
             while ((len = is.read(array)) != -1)
             {
                 bos.write(array, 0, len);

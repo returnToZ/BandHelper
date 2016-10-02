@@ -46,8 +46,6 @@
         <activity android:name=".Activity.ExitWindow" android:theme="@style/ExitWindow"/>
         <activity android:name=".Activity.ChatActivity"/>
         <activity android:name=".ChartFile.ChartActivity"/>
-        <activity android:name=".Activity.TestActivity"/>
-        <activity android:name=".Activity.BluetoothActivity"/>
         <activity android:name=".Activity.Test"/>
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"

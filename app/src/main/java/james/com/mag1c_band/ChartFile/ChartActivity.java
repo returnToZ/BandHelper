@@ -31,7 +31,7 @@ public class ChartActivity extends Activity {
 
         mService = new ChartService(this);
         mService.setXYMultipleSeriesDataset("步数曲线");
-        mService.setXYMultipleSeriesRenderer(100, 50, "步数曲线", "时间", "温度",
+        mService.setXYMultipleSeriesRenderer(100, 4000, "步数曲线", "时间", "温度",
                 Color.BLUE, Color.RED, Color.LTGRAY, Color.BLACK);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
         mView = mService.getGraphicalView();
 
