@@ -46,8 +46,9 @@ public class MainActivity extends Activity {
     private int t = 0;
     private KalmanAlgorithm kalmanAlgorithm;
     private StepCount stepCount;
-    private String stepData;
+    private byte[] stepData;
     private TextView stepNum;
+    private int numberOfStep = 0;
     final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
             {
                     SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.SINA,
@@ -66,6 +67,7 @@ public class MainActivity extends Activity {
         stepData = Utils.isChartDataExists(this);
         if (stepData != null)
         {
+            Log.d("readOrNot",String .valueOf(stepData.length));
             kalmanAlgorithm = new KalmanAlgorithm(stepData);
             stepCount = new StepCount();
         }
@@ -76,7 +78,7 @@ public class MainActivity extends Activity {
 
         mService = new ChartService(this);
         mService.setXYMultipleSeriesDataset("步数曲线");
-        mService.setXYMultipleSeriesRenderer(10000, 30000, "步数曲线", "时间", "温度",
+        mService.setXYMultipleSeriesRenderer(2000, 40000, "步数曲线", "时间", "温度",
                 Color.BLUE, Color.RED, Color.LTGRAY, Color.BLACK);//轴的颜色 标签的颜色 曲线的颜色 格子的颜色
         mView = mService.getGraphicalView();
 
@@ -97,12 +99,18 @@ public class MainActivity extends Activity {
         //定时更新图表
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            double temp = kalmanAlgorithm.Kalman();
+            double temp = kalmanAlgorithm.getFinalData();
+            if (temp == -9999999f)//数据读完了就不读了
+            {
+                timer.cancel();
+            }
             Log.d("processedData", String.valueOf(temp));
             mService.updateChart(t, temp);
             //mService2.updateChart(t, Math.random() * 100);
-            t += 3;
-            stepNum.setText(String.valueOf(stepCount.calcStep(temp, 0f, 0f, 0f)));
+            t += 7;
+            numberOfStep += stepCount.calcStep(kalmanAlgorithm.getCalcY());
+            Log.d("yLast", String.valueOf(kalmanAlgorithm.getCalcY()));
+            stepNum.setText(String.valueOf(numberOfStep));
         }
     };
 

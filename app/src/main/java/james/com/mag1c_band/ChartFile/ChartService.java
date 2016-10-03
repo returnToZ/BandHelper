@@ -83,7 +83,7 @@ public class ChartService {
         multipleSeriesRenderer.setPanEnabled(true,false);//x轴可以平移而y轴不可以
         multipleSeriesRenderer.setXTitle(xTitle);
         multipleSeriesRenderer.setYTitle(yTitle);
-        multipleSeriesRenderer.setRange(new double[]{0, maxX, 0, maxY});//xy轴的范围
+        multipleSeriesRenderer.setRange(new double[]{0, maxX, -5000, maxY});//xy轴的范围
         multipleSeriesRenderer.setLabelsColor(labelColor);
         multipleSeriesRenderer.setXAxisMin(Xmin);
         multipleSeriesRenderer.setXAxisMax(Xmax);

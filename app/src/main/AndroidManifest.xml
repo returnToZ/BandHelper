@@ -89,7 +89,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tencent100424468" />
+                <array android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
         <activity
@@ -97,10 +97,10 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--QQ/QZONE,END-->
-        <meta-data
+        <meta-array
             android:name="UMENG_APPKEY"
             android:value="57486373e0f55a315b00232c" >
-        </meta-data>
+        </meta-array>
     </application>
 
 </manifest>

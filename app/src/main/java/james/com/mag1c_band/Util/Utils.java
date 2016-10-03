@@ -40,7 +40,7 @@ public class Utils {
         return false;
     }
 
-    public static String isChartDataExists(Context context) {
+    public static byte[] isChartDataExists(Context context) {
         File fileDir = new File(context.getFilesDir(), "data");
         FileInputStream is;
         try
@@ -54,13 +54,17 @@ public class Utils {
                 bos.write(array, 0, len);
             }
             bos.close();
+            Log.d("readOrNot",bos.toString());
             is.close();
-            String temp;
+            //String temp;
+            /*
             temp = bos.toString().replaceAll("76 81 ","");
             temp = temp.replaceAll("0D 0A ","");
             temp = temp.replaceAll(" ","");
             Log.d("data",temp);
-            return temp;
+            Log.d("dataLength",String.valueOf(temp.length()));
+            */
+            return bos.toByteArray();
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
@@ -81,6 +85,26 @@ public class Utils {
             result += hexString.toUpperCase();
         }
         return result;
+    }
+    public static int SquareRoot(int data)
+    {
+        int num = data;
+        int num2 = 0;
+        int num3;
+        for (num3 = 1073741824; num3 > num; num3 >>= 2)
+        {
+        }
+        while (num3 != 0)
+        {
+            if (num >= num2 + num3)
+            {
+                num -= num2 + num3;
+                num2 += 2 * num3;
+            }
+            num2 >>= 1;
+            num3 >>= 2;
+        }
+        return num2;
     }
 
 }

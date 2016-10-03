@@ -71,8 +71,8 @@ def register(request):
 			dict["result"] = "success"
 			return JsonResponse(dict)
 	else:
-		data = "123456"
-		hash_md5 = hashlib.md5(data)
+		array = "123456"
+		hash_md5 = hashlib.md5(array)
 		result = hash_md5.hexdigest()
 		return HttpResponse(result)
 
@@ -97,8 +97,8 @@ def register_teacher(request):
 			dict["result"] = "success"
 			return JsonResponse(dict)
 	else:
-		data = "123456"
-		hash_md5 = hashlib.md5(data)
+		array = "123456"
+		hash_md5 = hashlib.md5(array)
 		result = hash_md5.hexdigest()
 		return HttpResponse(result)
 
